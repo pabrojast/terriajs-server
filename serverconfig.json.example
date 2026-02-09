@@ -18,6 +18,14 @@
     // If this setting is true, the allowProxyFor list is ignored, and all requests are accepted.
     "proxyAllDomains": false,
 
+    // Block active document content-types from being served through the proxy.
+    // Set to [] to disable blocking (not recommended).
+    "proxyBlockedContentTypes": [
+        "text/html",
+        "application/xhtml+xml",
+        "image/svg+xml"
+    ],
+
     // The largest size, in bytes, of data that the proxy will send in a POST request
     "proxyPostSizeLimit": 102400,
 

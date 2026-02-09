@@ -10,6 +10,12 @@
 
   "proxyAllDomains": false,
 
+  "proxyBlockedContentTypes": [
+    "text/html",
+    "application/xhtml+xml",
+    "image/svg+xml"
+  ],
+
   "proxyPostSizeLimit": 102400,
 
   "initPaths": ["../randominits"],

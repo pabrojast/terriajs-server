@@ -175,6 +175,17 @@ function doCommonTest(methodName) {
         .expect("fakeheader", "fakevalue");
     });
 
+    it("should block HTML responses by default", async () => {
+      testServer.addRoute(methodName, "/html", (req, res) => {
+        res.set("Content-Type", "text/html");
+        res.send("<html><body>blocked</body></html>");
+      });
+
+      await supertestReq(app)
+        [methodName](`/proxy/localhost:${TEST_SERVER_PORT}/html`)
+        .expect(415);
+    });
+
     describe("should change headers", () => {
       it("to overwrite cache-control header to two weeks if no max age is specified in req", async () => {
         testServer.addRoute(methodName, "/", (req, res) => {

@@ -14,6 +14,8 @@ describe("proxy processHeaders", () => {
     expect(result.unfilteredheader).toBe(headers.unfilteredheader);
     expect(result["cache-control"]).toBe("public,max-age=1200");
     expect(result["access-control-allow-origin"]).toBe("*");
+    expect(result["content-security-policy"]).toBe("sandbox");
+    expect(result["x-content-type-options"]).toBe("nosniff");
   });
 
   it("don't set duration when undefined", () => {
@@ -27,5 +29,7 @@ describe("proxy processHeaders", () => {
     expect(result.unfilteredheader).toBe(headers.unfilteredheader);
     expect(result["cache-control"]).toBeUndefined();
     expect(result["access-control-allow-origin"]).toBe("*");
+    expect(result["content-security-policy"]).toBe("sandbox");
+    expect(result["x-content-type-options"]).toBe("nosniff");
   });
 });
